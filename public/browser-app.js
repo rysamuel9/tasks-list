@@ -18,7 +18,7 @@ const showTasks = async () => {
         }
         const allTasks = tasks
             .map((task) => {
-                const { completed, _id: taskID, name } = task;
+                const { completed, _id: id, name } = task;
                 return `<div class="single-task ${
                     completed && 'task-completed'
                 }">
@@ -28,11 +28,11 @@ const showTasks = async () => {
 
 
 <!-- edit link -->
-<a href="task.html?id=${taskID}"  class="edit-link">
+<a href="task.html?id=${id}"  class="edit-link">
 <i class="fas fa-edit"></i>
 </a>
 <!-- delete btn -->
-<button type="button" class="delete-btn" data-id="${taskID}">
+<button type="button" class="delete-btn" data-id="${id}">
 <i class="fas fa-trash"></i>
 </button>
 </div>
@@ -42,7 +42,7 @@ const showTasks = async () => {
         tasksDOM.innerHTML = allTasks;
     } catch (error) {
         tasksDOM.innerHTML =
-            '<h5 class="empty-list box-container">There was an error, please try later....</h5>';
+            '<h5 class="empty-list">There was an error, please try later....</h5>';
     }
     loadingDOM.style.visibility = 'hidden';
 };
@@ -73,7 +73,7 @@ formDOM.addEventListener('submit', async (e) => {
     const name = taskInputDOM.value;
 
     try {
-        await axios.post('/api/v1/tasks', { name });
+        await axios.post('/api/v1/tasks', { task });
         showTasks();
         taskInputDOM.value = '';
         formAlertDOM.style.display = 'block';

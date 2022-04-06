@@ -10,6 +10,7 @@ const taskRouter = require('./routes/task');
 
 app.use(express.json());
 app.use(morgan('dev'));
+app.use(express.static('./public'))
 
 app.use('/api/v1/tasks', taskRouter);
 

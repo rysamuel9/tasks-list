@@ -6,11 +6,11 @@ const app = express();
 const HOST = 'localhost';
 const PORT = process.env.PORT;
 const connection = require('./database/connection');
-const taskRouter = require('./routes/task');
+const taskRouter = require('./routes/tasks');
 
 app.use(express.json());
 app.use(morgan('dev'));
-app.use(express.static('./public'))
+app.use(express.static('./public'));
 
 app.use('/api/v1/tasks', taskRouter);
 

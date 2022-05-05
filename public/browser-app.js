@@ -41,8 +41,8 @@ const showTasks = async () => {
             .join('');
         tasksDOM.innerHTML = allTasks;
     } catch (error) {
-        tasksDOM.innerHTML =
-            '<h5 class="empty-list">There was an error, please try later....</h5>';
+        // tasksDOM.innerHTML =
+            // '<h5 class="empty-list">There was an error, please try later....</h5>';
     }
     loadingDOM.style.visibility = 'hidden';
 };
